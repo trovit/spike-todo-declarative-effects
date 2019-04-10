@@ -1,11 +1,11 @@
 import React from 'react';
-import { subscribe } from '../../infrastructure/store/subscriptions';
+import subscribe from '../../infrastructure/store/subscriptions';
 import { getIn } from '../..//infrastructure/store/storeUtils';
 
 export function Toast({ text, shown }) {
 
   return shown && (
-    <div style={{ position: 'fixed', bottom: 0, background: 'rebeccapurple', color: 'white' }}>{text}</div>
+    <div className="toast">{text}</div>
   )
 }
 
