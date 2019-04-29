@@ -1,4 +1,4 @@
-import { clearHandlers } from "../src/lib/reffect";
+import { clearHandlers } from "reffects";
 
 export function applyEventsFixture(events) {
   beforeAll(() => {

@@ -1,4 +1,4 @@
-import * as reffect from "../lib/reffect";
+import * as reffects from "reffects";
 import * as httpEffects from "./httpEffects";
 import * as httpClientModule from "../infrastructure/httpClient";
 import { destroyAllMocks } from "../../testHelpers/fixtures";
@@ -7,10 +7,10 @@ import { callsTo } from "../../testHelpers/mockHelpers";
 describe("http effects", () => {
   describe("get effect", () => {
     expect(httpClientModule.get).toBeDefined();
-    expect(reffect.dispatch).toBeDefined();
+    expect(reffects.dispatch).toBeDefined();
 
     afterEach(() => {
-      reffect.clearHandlers();
+      reffects.clearHandlers();
       destroyAllMocks();
     });
 
@@ -20,7 +20,7 @@ describe("http effects", () => {
       const fakeHttpClient = {get: function({url, successFn}) {return successFn({data: responseData});}};
       const dispatch = jest.fn();
       httpEffects.register(fakeHttpClient, dispatch);
-      const httpeffectHandler = reffect.getEffectHandler(effectId);
+      const httpeffectHandler = reffects.getEffectHandler(effectId);
       const successEventId = "successEventId"
       const successEventRestOfPayload = ["arg1", "arg2"];
 

@@ -1,5 +1,5 @@
 
-import { dispatch, setVerbosity } from "./lib/reffect";
+import { dispatch, setVerbosity } from "reffects";
 import * as httpEffects from "./effects/httpEffects";
 import * as mutateEffect from "./effects/mutate";
 import * as toastEffect from "./effects/toast";

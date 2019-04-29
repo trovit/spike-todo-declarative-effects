@@ -1,4 +1,4 @@
-import * as reffect from "../lib/reffect";
+import * as reffects from "reffects";
 import * as stateCoeffect from "./state";
 import * as storeModule from "../infrastructure/store/store";
 import { destroyAllMocks } from "../../testHelpers/fixtures";
@@ -8,7 +8,7 @@ describe("state coeffect", () => {
   expect(storeModule.getState).toBeDefined();
 
   afterEach(() => {
-    reffect.clearHandlers();
+    reffects.clearHandlers();
     destroyAllMocks();
   });
 
@@ -25,7 +25,7 @@ describe("state coeffect", () => {
     .mockReturnValueOnce(state.todos)
     .mockReturnValueOnce(state.toast.id);
     stateCoeffect.register(store);
-    const stateHandler = reffect.getCoeffectHandler(coeffectDescription.id);
+    const stateHandler = reffects.getCoeffectHandler(coeffectDescription.id);
 
     expect(stateHandler(coeffectDescription.data)).toEqual({ 
       [coeffectDescription.id]: {todosRenamed: state.todos, toastId: state.toast.id} 

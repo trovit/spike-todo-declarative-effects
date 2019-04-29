@@ -1,4 +1,4 @@
-import { registerEventHandler } from "../../lib/reffect";
+import { registerEventHandler } from "reffects";
 import * as coeffects from '../../coeffects/factories';
 
 export function register() {
@@ -9,8 +9,8 @@ export function register() {
         successEvent: ["loadTodosSucceeded"]
       }
     };
-  }, 
-  [coeffects.apiUrl()]);
+  },
+    [coeffects.apiUrl()]);
 
   registerEventHandler("loadTodosSucceeded", function loadTodosSucceeded(coeffects, [response]) {
     function extractTodos(payload) {
@@ -34,7 +34,7 @@ export function register() {
       mutate: [{ path: ["visibilityFilter"], newValue: activeFilter }]
     };
   });
- 
+
   registerEventHandler("todoClicked", function toggleTodo(coeffects, { id, text, isDone }) {
     const { state: { todos } } = coeffects;
 
@@ -54,10 +54,10 @@ export function register() {
         { path: ["todos"], newValue: newTodos },
       ],
       toast: {
-        text:  `"${text}" was marked as ${isDone ? 'undone' : 'done'}.`,
+        text: `"${text}" was marked as ${isDone ? 'undone' : 'done'}.`,
         milliseconds: 3000
       }
     };
-  }, 
-  [coeffects.state({ path: ['todos'], key: 'todos' })]);
+  },
+    [coeffects.state({ path: ['todos'], key: 'todos' })]);
 }

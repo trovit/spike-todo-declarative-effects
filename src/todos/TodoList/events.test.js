@@ -1,5 +1,5 @@
 import * as events from './events';
-import { getEventHandler, clearHandlers } from '../../lib/reffect';
+import { getEventHandler } from 'reffects';
 import { applyEventsFixture } from '../../../testHelpers/fixtures';
 
 applyEventsFixture(events);
@@ -77,11 +77,11 @@ describe('events', () => {
       }
     };
 
-    expect(todoClicked(givenCoeffects, {id , isDone, text })).toEqual({
+    expect(todoClicked(givenCoeffects, { id, isDone, text })).toEqual({
       toast: {
         text: '"Lorem ipsum" was marked as undone.',
         milliseconds: 3000
-      }, 
+      },
       mutate: [
         {
           path: ["todos"], newValue: [{
@@ -109,11 +109,11 @@ describe('events', () => {
       }
     };
 
-    expect(todoClicked(givenCoeffects, {id , isDone, text })).toEqual({
+    expect(todoClicked(givenCoeffects, { id, isDone, text })).toEqual({
       toast: {
         text: '"Lorem ipsum" was marked as done.',
         milliseconds: 3000
-      }, 
+      },
       mutate: [
         {
           path: ["todos"], newValue: [{

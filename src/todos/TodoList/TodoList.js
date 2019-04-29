@@ -1,5 +1,5 @@
 import React from "react";
-import { dispatch } from "../../lib/reffect";
+import { dispatch } from "reffects";
 import subscribe from "../../infrastructure/store/subscriptions";
 import { visibleTodosSelector } from "../selectors";
 import TodoItem from "./TodoItem";

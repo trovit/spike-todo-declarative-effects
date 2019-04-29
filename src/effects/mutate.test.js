@@ -1,4 +1,4 @@
-import * as reffect from "../lib/reffect";
+import * as reffects from "reffects";
 import * as mutateEffect from "./mutate";
 import * as storeModule from "../infrastructure/store/store";
 import { destroyAllMocks } from "../../testHelpers/fixtures";
@@ -8,7 +8,7 @@ describe("mutate effect", () => {
   expect(storeModule.setState).toBeDefined();
 
   afterEach(() => {
-    reffect.clearHandlers();
+    reffects.clearHandlers();
     destroyAllMocks();
   });
 
@@ -16,7 +16,7 @@ describe("mutate effect", () => {
     const effectId = "mutate";
     const store = {setState: jest.fn()};
     mutateEffect.register(store);
-    const mutateHandler = reffect.getEffectHandler(effectId);
+    const mutateHandler = reffects.getEffectHandler(effectId);
     const firstMutation = { path: ["visibilityFilter"], newValue: "all" };
     const secondMutation = { path: ["toast", "isShown"], newValue: true };
     const mutations = [firstMutation, secondMutation];
