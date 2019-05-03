@@ -1,10 +1,16 @@
-import { setIn, getIn } from "./storeUtils";
+import { setIn, getIn } from './storeUtils';
 
 let state = {};
 let listeners = [];
 
 export function getState(path = []) {
   return getIn(state, path, state);
+}
+
+export function executeAllListeners() {
+  listeners.forEach(function iterateListeners(currentListener) {
+    currentListener(state);
+  });
 }
 
 export function setState(mutation) {
@@ -20,10 +26,7 @@ export function setState(mutation) {
 
   state = setIn(state, path, newValue);
 
-  let currentListeners = listeners;
-  for (let i = 0; i < currentListeners.length; i++) {
-    currentListeners[i](state);
-  }
+  executeAllListeners();
 }
 
 export function subscribe(listener) {
@@ -31,14 +34,16 @@ export function subscribe(listener) {
 }
 
 export function unsubscribe(listener) {
-  let out = [];
-  for (let i = 0; i < listeners.length; i++) {
-    if (listeners[i] === listener) {
+  const out = [];
+
+  listeners.forEach(function iterateListeners(currentListener) {
+    if (currentListener === listener) {
       listener = null;
     } else {
-      out.push(listeners[i]);
+      out.push(currentListener);
     }
-  }
+  });
+
   listeners = out;
 }
 

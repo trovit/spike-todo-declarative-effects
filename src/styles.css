@@ -1,7 +1,6 @@
 body {
   font-family: monospace, sans-serif;
   color: black;
-  background: gold;
 }
 
 .App {
@@ -46,17 +45,18 @@ body {
 .App button {
   padding: 1rem;
   margin-left: 1rem;
-  background: yellow;
+  color: white;
+  background: rebeccapurple;
   font-family: monospace, sans-serif;
   font-size: 1rem;
-  border: 2px solid khaki;
+  border: 2px solid purple;
   cursor: pointer;
 }
 
 .toast {
   position: fixed;
-  top: 1rem;
+  bottom: 1rem;
   padding: 1rem;
-  background: rebeccapurple;
   color: white;
+  background: rebeccapurple;
 }
