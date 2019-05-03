@@ -1,6 +1,5 @@
 import React from 'react';
-import subscribe from '../../infrastructure/store/subscriptions';
-import { getIn } from '../..//infrastructure/store/storeUtils';
+import { subscribe, getIn } from 'reffects-store';
 
 export function Toast({ text, shown }) {
 

@@ -1,6 +1,6 @@
 import * as reffects from "reffects";
 import * as toastEffect from "./toast";
-import * as storeModule from "../infrastructure/store/store";
+import { store as storeModule } from "reffects-store";
 import * as timerModule from "../infrastructure/timer";
 import { destroyAllMocks } from "../../testHelpers/fixtures";
 import { callsTo } from "../../testHelpers/mockHelpers";

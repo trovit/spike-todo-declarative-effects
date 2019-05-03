@@ -1,6 +1,6 @@
 import React from "react";
 import { dispatch } from "reffects";
-import subscribe from "../../infrastructure/store/subscriptions";
+import { subscribe } from "reffects-store";
 import { visibleTodosSelector } from "../selectors";
 import TodoItem from "./TodoItem";
 import { VISIBILITY_FILTERS_SHOW_ALL, VISIBILITY_FILTERS_SHOW_DONE, VISIBILITY_FILTERS_SHOW_UNDONE } from "../constants";
