@@ -1,6 +1,6 @@
-## Custom coeffects
+## Custom coeffects in the todos app.
 
-These are the custom coeffects we have created for the todo app:
+These are the custom coeffects we have created for the *todos app*:
 
 ## `datetime`
 
