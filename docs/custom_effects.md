@@ -1,4 +1,4 @@
-## Custom effectss
+## Custom effects in todos app.
 
 These are the custom effects we have created for the *todos app*:
 
