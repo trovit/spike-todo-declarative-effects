@@ -1,4 +1,6 @@
-## Custom effects
+## Custom effectss
+
+These are the custom effects we have created for the *todos app*:
 
 ## `get`
 The `get` effect is used in pure event handlers to make `GET` requests to given endpoints. 
@@ -26,7 +28,7 @@ a. `url`: the url used to make the `GET` request.
 b. `successEvent`: The event that will be dispatched when the request finishes successfully. Its payload will be the response data.
 
 ### `mutate`
-The `mutate` effect is used to mutate a value located on the `app-state` at a given path.
+The `mutate` effect is used to mutate a value located on the `app-state` at a given path from pure event handlers.
 
 Example:
 
@@ -52,7 +54,9 @@ Notice that the data associated to the `mutate` effect in the effects object is 
 
 1. `path`: the path in the app state to get to the value we'd like to mutate. A path can be an array of strings like `['todos', 'status']` or a string in which each part of the path is separated by a dot, like `'todos.status'`. In both cases, the piece of state being mutated would be `appState.todos.status`.
 
-2. `newValue`: the new value to be set .
+2. `newValue`: the new value to be set.
+
+You should never use the `setState` method of the `reffects-store` inside an event handler or inside any function called from an event handler because that would make it impure and, as such, much more difficult to test.
 
 ### toast
 
