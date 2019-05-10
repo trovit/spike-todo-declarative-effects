@@ -1,5 +1,6 @@
 
-import { dispatch, setVerbosity } from "./lib/reffect";
+import { dispatch, setVerbosity } from "reffects";
+import { store } from "reffects-store";
 import * as httpEffects from "./effects/httpEffects";
 import * as mutateEffect from "./effects/mutate";
 import * as toastEffect from "./effects/toast";
@@ -10,7 +11,6 @@ import * as apiUrlCoeffect from "./coeffects/apiUrl";
 
 import * as httpClient from "./infrastructure/httpClient";
 import * as timer from "./infrastructure/timer";
-import * as store from "./infrastructure/store/store";
 
 import * as todoListEvents from "./todos/TodoList/events";
 

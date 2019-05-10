@@ -1,12 +1,12 @@
-import { registerEffectHandler } from "../lib/reffect";
+import { registerEffectHandler } from "reffects";
 
 export function register(httpClient, dispatch) {
   registerEffectHandler("get", function getEffect(requestDescription) {
     const [eventId, ...rest] = requestDescription.successEvent;
     httpClient.get({
       url: requestDescription.url,
-      successFn: function (response) { 
-        dispatch({eventId, payload: [response.data].concat(rest)});
+      successFn: function (response) {
+        dispatch({ eventId, payload: [response.data].concat(rest) });
       }
     });
   });

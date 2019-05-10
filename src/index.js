@@ -1,17 +1,17 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import { dispatch } from "reffects";
 
 import "./styles.css";
 
 import TodoList from "./todos/TodoList/TodoList";
-import { dispatch } from "./lib/reffect";
 import Toast from "./todos/Toast/Toast";
 import * as boostrap from "./bootstrap";
 
 boostrap.startApp();
 
 function App() {
-  dispatch({eventId: "loadTodos"});
+  dispatch({ eventId: "loadTodos" });
 
   return (
     <div className="App">
