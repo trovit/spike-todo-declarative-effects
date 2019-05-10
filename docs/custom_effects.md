@@ -21,9 +21,9 @@ registerEventHandler(
 ```
 In the example above, we use the `get` effect inside the event handler for the `loadTodos` event in order to retrieve data from an endpoint. For the *TODO app* example we have implemented only two common configuration options: 
 
-a. `url`: the url used in to make the `GET` request.
+a. `url`: the url used to make the `GET` request.
 
-b. `successEvent`: The event that will be dispatched when the request finishes successfully.
+b. `successEvent`: The event that will be dispatched when the request finishes successfully. Its payload will be the response data.
 
 ### `mutate`
 The `mutate` effect is used to mutate a value located on the `app-state` at a given path.
