@@ -58,7 +58,7 @@ Example:
 ```
 In this example we used the third parameter of [reffects' registerEventHandler](https://github.com/trovit/reffects/blob/master/docs/api.md#registereventhandler) function to declare the list of coeffects that the event handler of the `displayTime` event will receive the `datetime` coeffect when called. In this case, it includes only the `state` coeffect. To make its declaration shorter we're using the `state` function which is a coeffects factory function, in `coeffects.state({ path: ['todos'], key: 'todos' })])`. This factory function receives a list of *extractions*. Each extraction is an object that has the following two properties:
 
-1. `path`: the path in the app state to get to the value we'd like to mutate. A path can be an array of strings like `['todos', 'status']` or a string in which each part of the path is separated by a dot, like `'todos.status'`. In both cases, the piece of state being mutated would be `appState.todos.status`.
+1. `path`: the path in the app state to get to the value we'd like to extract. A path can be an array of strings like `['todos', 'status']` or a string in which each part of the path is separated by a dot, like `'todos.status'`. In both cases, the piece of state being extracted would be `appState.todos.status`.
 
 2. `key`: the key that the value will be associated to in the object associated to the `state` key in the coeffects object.
 
