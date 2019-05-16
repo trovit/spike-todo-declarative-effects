@@ -5,14 +5,11 @@
   "keywords": [],
   "main": "src/index.js",
   "dependencies": {
-    "lodash.clone": "^4.5.0",
-    "lodash.get": "^4.4.2",
-    "lodash.setwith": "^4.3.2",
     "react": "16.8.3",
     "react-dom": "16.8.3",
     "react-scripts": "2.1.8",
-    "reffects": "^0.1.0",
-    "reffects-store": "^0.1.4",
+    "reffects": "^0.1.2",
+    "reffects-store": "^0.1.5",
     "reselect": "^4.0.0"
   },
   "devDependencies": {
