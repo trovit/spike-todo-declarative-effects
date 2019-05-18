@@ -48,7 +48,7 @@ registerEventHandler(
         return todo;
     });
     return {
-      mutate: [
+      setState: [
         { path: ["todos"], newValue: newTodos },
       ]
     };

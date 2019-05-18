@@ -1,10 +1,10 @@
 import * as reffects from "reffects";
-import * as mutateEffect from "./mutate";
+import * as setStateEffect from "./setState";
 import { store as storeModule } from "reffects-store";
 import { destroyAllMocks } from "../../testHelpers/fixtures";
 import { callsTo } from "../../testHelpers/mockHelpers";
 
-describe("mutate effect", () => {
+describe("setState effect", () => {
   expect(storeModule.setState).toBeDefined();
 
   afterEach(() => {
@@ -12,16 +12,16 @@ describe("mutate effect", () => {
     destroyAllMocks();
   });
 
-  test("should mutate the state in the store", () => {
-    const effectId = "mutate";
+  test("should setState the state in the store", () => {
+    const effectId = "setState";
     const store = { setState: jest.fn() };
-    mutateEffect.register(store);
-    const mutateHandler = reffects.getEffectHandler(effectId);
+    setStateEffect.register(store);
+    const setStateHandler = reffects.getEffectHandler(effectId);
     const firstMutation = { path: ["visibilityFilter"], newValue: "all" };
     const secondMutation = { path: ["toast", "isShown"], newValue: true };
     const mutations = [firstMutation, secondMutation];
 
-    mutateHandler(mutations);
+    setStateHandler(mutations);
 
     expect(store.setState).toHaveBeenCalledTimes(2);
     expect(callsTo(store.setState)).toEqual([[firstMutation], [secondMutation]]);

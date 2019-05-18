@@ -35,7 +35,7 @@ describe('events', () => {
         }
       ]
     }])).toEqual({
-      mutate:
+      setState:
         [{
           path: ["todos"], newValue: [
             {
@@ -58,7 +58,7 @@ describe('events', () => {
     const filterTodos = getEventHandler('filterTodos');
 
     expect(filterTodos(givenCoeffects, 'codorniz')).toEqual({
-      mutate: [{ path: ["visibilityFilter"], newValue: 'codorniz' }]
+      setState: [{ path: ["visibilityFilter"], newValue: 'codorniz' }]
     })
   });
 
@@ -82,7 +82,7 @@ describe('events', () => {
         text: '"Lorem ipsum" was marked as undone.',
         milliseconds: 3000
       },
-      mutate: [
+      setState: [
         {
           path: ["todos"], newValue: [{
             id: 1,
@@ -114,7 +114,7 @@ describe('events', () => {
         text: '"Lorem ipsum" was marked as done.',
         milliseconds: 3000
       },
-      mutate: [
+      setState: [
         {
           path: ["todos"], newValue: [{
             id: 1,

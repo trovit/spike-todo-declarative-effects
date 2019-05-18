@@ -1,7 +1,7 @@
 import { registerEffectHandler } from "reffects";
 
 export function register(store) {
-  registerEffectHandler("mutate", function mutateEffect(mutations) {
+  registerEffectHandler("setState", function setStateEffect(mutations) {
     mutations.forEach(function (mutation) {
       store.setState(mutation);
     });

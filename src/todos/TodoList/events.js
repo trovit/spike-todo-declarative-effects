@@ -28,7 +28,7 @@ export function register() {
       const todos = extractTodos(response);
 
       return {
-        mutate:
+        setState:
           [{ path: ["todos"], newValue: todos }]
       };
     });
@@ -37,7 +37,7 @@ export function register() {
     "filterTodos", 
     function filterTodos(coeffects, activeFilter) {
       return {
-        mutate: [{ path: ["visibilityFilter"], newValue: activeFilter }]
+        setState: [{ path: ["visibilityFilter"], newValue: activeFilter }]
       };
     });
 
@@ -58,7 +58,7 @@ export function register() {
       const newTodos = toggleTodo(id, todos);
 
       return {
-        mutate: [
+        setState: [
           { path: ["todos"], newValue: newTodos },
         ],
         toast: {

@@ -2,7 +2,7 @@
 import { dispatch, setVerbosity } from "reffects";
 import { store } from "reffects-store";
 import * as httpEffects from "./effects/httpEffects";
-import * as mutateEffect from "./effects/mutate";
+import * as setStateEffect from "./effects/setState";
 import * as toastEffect from "./effects/toast";
 
 import * as stateCoeffect from "./coeffects/state";
@@ -40,7 +40,7 @@ export function startApp() {
 
 function registerEffects() {
   httpEffects.register(httpClient, dispatch);
-  mutateEffect.register(store);
+  setStateEffect.register(store);
   toastEffect.register(store, timer);
 }
 
