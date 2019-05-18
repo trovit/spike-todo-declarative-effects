@@ -3,6 +3,7 @@ import * as stateCoeffect from "./state";
 import { store as storeModule } from "reffects-store";
 import { destroyAllMocks } from "../../testHelpers/fixtures";
 import { callsTo } from "../../testHelpers/mockHelpers";
+import { coeffect } from './factories';
 
 describe("state coeffect", () => {
   expect(storeModule.getState).toBeDefined();
@@ -14,12 +15,9 @@ describe("state coeffect", () => {
 
   test("should extract the expected values from the store", () => {
     const state = { todos: [{ id: "123", text: "saludos", isDone: true }], toast: { id: "pepe" } };
-    const pathToTodos = ["todos"];
-    const pathToToastId = ["toast", "id"];
-    const coeffectDescription = {
-      id: "state",
-      data: [{ path: pathToTodos, key: "todosRenamed" }, { path: pathToToastId, key: "toastId" }]
-    };
+    const pathToTodos = "todos";
+    const pathToToastId = "toast.id";
+    const coeffectDescription = coeffect("state", {"todosRenamed": "todos", "toastId": "toast.id"});
     const store = {};
     store.getState = jest.fn()
       .mockReturnValueOnce(state.todos)

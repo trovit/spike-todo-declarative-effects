@@ -1,11 +1,6 @@
-export function apiUrl() {
-  return "apiUrl";
-}
-
-export function state(...extractions) {
-  return { id: 'state', data: extractions };
-}
-
-export function dateTime() {
-  return "datetime";
-}
+export function coeffect(id, data) {
+  if (!data) {
+    return id;
+  }
+  return { id: id, data: data };
+} // TODO: move coeffect to reffects

@@ -37,48 +37,46 @@ You should never use the `getState` method of the `reffects-store` inside an eve
 Example:
 
 ```js
- registerEventHandler(
-    "todoClicked", 
-    function toggleTodo(coeffects, { id, text, isDone }) {
-        const { state: { todos } } = coeffects;
-        const newTodos = todos.map(todo => {
-            if (todo.id === id) {
-              return Object.assign({}, todo, { done: !todo.done });
-            }
-            return todo;
-        });
-        return {
-          mutate: [
-            { path: ["todos"], newValue: newTodos },
-          ]
-        };
-    },
-    [coeffects.state({ path: ['todos'], key: 'todos' })]);
-}
+registerEventHandler(
+  "todoClicked", 
+  function todoClicked(coeffects, { id, text, isDone }) {
+    const { state: { todos } } = coeffects;
+    const newTodos = todos.map(todo => {
+        if (todo.id === id) {
+          return Object.assign({}, todo, { done: !todo.done });
+        }
+        return todo;
+    });
+    return {
+      mutate: [
+        { path: ["todos"], newValue: newTodos },
+      ]
+    };
+  },
+  [coeffect('state', {todos: 'todos'})]);
 ```
-In this example we used the third parameter of [reffects' registerEventHandler](https://github.com/trovit/reffects/blob/master/docs/api.md#registereventhandler) function to declare the list of coeffects that the event handler of the `displayTime` event will receive the `datetime` coeffect when called. In this case, it includes only the `state` coeffect. To make its declaration shorter we're using the `state` function which is a coeffects factory function, in `coeffects.state({ path: ['todos'], key: 'todos' })])`. This factory function receives a list of *extractions*. Each extraction is an object that has the following two properties:
+In this example we used the third parameter of [reffects' registerEventHandler](https://github.com/trovit/reffects/blob/master/docs/api.md#registereventhandler) function to declare the list of coeffects that the event handler of the `todoClicked` event will receive when called. In this case, it includes only the `state` coeffect. To declare it we're using the `coeffect` function which is a coeffects factory function, in `coeffect('state', {todos: 'todos'})`. This factory function receives an object constaining key-value pairs that represent *extractions*. Each extraction (key-value pair) is interpreted as:
 
-1. `path`: the path in the app state to get to the value we'd like to extract. A path can be an array of strings like `['todos', 'status']` or a string in which each part of the path is separated by a dot, like `'todos.status'`. In both cases, the piece of state being extracted would be `appState.todos.status`.
+1. The key represents the **key** that the value will be associated to in the object associated to the `state` key in the coeffects object.
 
-2. `key`: the key that the value will be associated to in the object associated to the `state` key in the coeffects object.
+
+2. The value represents the **path** in the app state to get to the value we'd like to extract. A path is represented by a string in which each part of the path is separated by a dot, like `'todos.status'`. In this example, the piece of state being extracted would be `appState.todos.status`.
 
 For instance, given this `app-state`:
 
 ```js
 {
-    todos: {
-        :status 200
-    }
+  todos: {
+    :status 200
+  }
 }
 ```
-
-if the extraction of the value located at the path `'todos.status'` were expressed as `{ path: 'todos.status', key: 'todosResponseStatus' }`,
+if the extraction of the value located at the path `'todos.status'` were expressed as `{todosResponseStatus: 'todos.status'},
 an event handler that used it with the `state` coeffect would receive the following coeffects object when called: `{ state: {todosResponseStatus: 200}}`.
 
-If the extraction were expressed instead as `{ path: 'todos.status', key: 'koko' }`, the coeffects object received by an event handler using it would be `{ state: {koko: 200}}` when called.
+If the extraction were expressed instead as {koko: 'todos.status'}, the coeffects object received by an event handler using it would be `{ state: {koko: 200}}` when called.
 
-Notice the way the values are destructured from the object associated to the `state` coeffect inside the coeffects object: `{ state: { todos } }`. 
-This is a nested destructuring but since it's only two levels deep, you'll soon get used to it with a bit of practice. 
+Notice the way the values are destructured from the object associated to the `state` coeffect inside the coeffects object: `{ state: { todos } }`. This is a nested destructuring but since it's only two levels deep, you'll soon get used to it with a bit of practice. 
 
 ## `apiUrl`
 
