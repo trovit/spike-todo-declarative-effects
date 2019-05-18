@@ -5,7 +5,7 @@ import * as timerModule from "../infrastructure/timer";
 import { destroyAllMocks } from "../../testHelpers/fixtures";
 import { callsTo } from "../../testHelpers/mockHelpers";
 
-describe("setState effect", () => {
+describe("toast effect", () => {
   expect(storeModule.setState).toBeDefined();
   expect(storeModule.getState).toBeDefined();
   expect(timerModule.set).toBeDefined();

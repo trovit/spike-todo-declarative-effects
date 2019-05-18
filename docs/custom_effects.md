@@ -42,19 +42,19 @@ registerEventHandler(
                         done: !!item.description
                       }));;
         return {
-          setState: [{ path: ["todos"], newValue: todos }]
+            setState: [{ path: ["todos"], newValue: todos }]
         };
     }
 );
 ```
 
-In the example shown above, the event handler for `loadTodosSucceeded` event returns an effects object containing a `setState` effect that will set the new value of a part of the application state located at the `"todo"` path. 
+In the example shown above, the event handler for `loadTodosSucceeded` event returns an effects object containing a `setState` effect that will set the new value of a part of the application state located at the `"todos"` path. 
 
-Notice that the data associated to the `setState` effect in the effects object is always a list of mutations. Each mutation is an object comprised of two properties: 
+Notice that the data associated to the `setState` effect in the effects object is an object whose entries (key-value pairs) are mutations. Each mutation (key-value pair) is interpreted as: 
 
-1. `path`: the path in the app state to get to the value we'd like to mutate. A path can be an array of strings like `['todos', 'status']` or a string in which each part of the path is separated by a dot, like `'todos.status'`. In both cases, the piece of state being mutated would be `appState.todos.status`.
+1. The key represents the **path** in the app state to get to the value we'd like to mutate. A path is represented by a string in which each part of the path is separated by a dot, like `'todos.status'`. In this example, the piece of state being mutated would be `appState.todos.status`.
 
-2. `newValue`: the new value to be set.
+2. The value represents the **new value** to be set.
 
 You should never use the `setState` method of the `reffects-store` inside an event handler or inside any function called from an event handler because that would make it impure and, as such, much more difficult to test.
 

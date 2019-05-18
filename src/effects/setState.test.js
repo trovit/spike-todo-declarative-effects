@@ -17,9 +17,12 @@ describe("setState effect", () => {
     const store = { setState: jest.fn() };
     setStateEffect.register(store);
     const setStateHandler = reffects.getEffectHandler(effectId);
-    const firstMutation = { path: ["visibilityFilter"], newValue: "all" };
-    const secondMutation = { path: ["toast", "isShown"], newValue: true };
-    const mutations = [firstMutation, secondMutation];
+    const firstMutation = { path: "visibilityFilter", newValue: "all" };
+    const secondMutation = { path: "toast.isShown", newValue: true };
+    const mutations = {
+      [firstMutation.path]: firstMutation.newValue, 
+      [secondMutation.path]: secondMutation.newValue
+    };
 
     setStateHandler(mutations);
 

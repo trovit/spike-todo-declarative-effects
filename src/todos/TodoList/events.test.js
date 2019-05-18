@@ -35,9 +35,8 @@ describe('events', () => {
         }
       ]
     }])).toEqual({
-      setState:
-        [{
-          path: ["todos"], newValue: [
+      setState: {
+        "todos": [
             {
               id: 1,
               text: 'Describe: Kevin Bacon',
@@ -49,7 +48,7 @@ describe('events', () => {
               done: false,
             }
           ]
-        }]
+      }
     })
   });
 
@@ -58,7 +57,7 @@ describe('events', () => {
     const filterTodos = getEventHandler('filterTodos');
 
     expect(filterTodos(givenCoeffects, 'codorniz')).toEqual({
-      setState: [{ path: ["visibilityFilter"], newValue: 'codorniz' }]
+      setState: {"visibilityFilter": 'codorniz'}
     })
   });
 
@@ -82,15 +81,13 @@ describe('events', () => {
         text: '"Lorem ipsum" was marked as undone.',
         milliseconds: 3000
       },
-      setState: [
-        {
-          path: ["todos"], newValue: [{
+      setState: {
+        "todos": [{
             id: 1,
             text: 'Describe: Kevin Bacon',
             done: false,
           }]
-        }
-      ]
+      }
     });
   });
 
@@ -105,7 +102,7 @@ describe('events', () => {
           id: id,
           text: 'Describe: Kevin Bacon',
           done: false,
-        },]
+        }]
       }
     };
 
@@ -114,15 +111,13 @@ describe('events', () => {
         text: '"Lorem ipsum" was marked as done.',
         milliseconds: 3000
       },
-      setState: [
-        {
-          path: ["todos"], newValue: [{
+      setState: {
+        "todos": [{
             id: 1,
             text: 'Describe: Kevin Bacon',
             done: true,
           }]
-        }
-      ]
+      }
     });
   });
 })
