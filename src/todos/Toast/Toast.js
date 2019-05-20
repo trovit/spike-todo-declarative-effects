@@ -1,25 +1,21 @@
 import React from 'react';
-import { subscribe, getIn } from 'reffects-store';
+import { subscribe } from 'reffects-store';
 
 export function Toast({ text, shown }) {
-
-  return shown && (
-    <div className="toast">{text}</div>
-  )
+  return shown && <div className="toast">{text}</div>;
 }
 
 function selectToastVisible(state) {
-  return getIn(state, ['toast', 'visible']);
+  return state.toast.visible;
 }
 
 function selectToastText(state) {
-  return getIn(state, ['toast', 'text']);
+  return state.toast.text;
 }
 
-export default subscribe(function (state) {
+export default subscribe(Toast, function(state) {
   return {
     text: selectToastText(state),
-    shown: selectToastVisible(state),
+    shown: selectToastVisible(state)
   };
-})(Toast);
-
+});
