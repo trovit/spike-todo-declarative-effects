@@ -42,11 +42,14 @@ export function TodoList({ todos, handleFilterClick }) {
   );
 }
 
-export default subscribe(TodoList, function(state) {
-  return {
-    todos: visibleTodosSelector(state),
-    handleFilterClick: activeFilter => {
-      dispatch({ eventId: 'filterTodos', payload: activeFilter });
-    }
-  };
-});
+export default subscribe(
+  TodoList, 
+  function(state) {
+    return {
+      todos: visibleTodosSelector(state),
+      handleFilterClick: activeFilter => {
+        dispatch({ id: 'filterTodos', payload: activeFilter });
+      }
+    };
+  }
+);

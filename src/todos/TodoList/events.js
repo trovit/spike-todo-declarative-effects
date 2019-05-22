@@ -1,5 +1,4 @@
-import { registerEventHandler } from "reffects";
-import { coeffect } from '../../coeffects/factories';
+import { registerEventHandler, coeffect } from "reffects";
 
 export function register() {
   registerEventHandler(

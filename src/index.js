@@ -11,7 +11,7 @@ import * as boostrap from "./bootstrap";
 boostrap.startApp();
 
 function App() {
-  dispatch({ eventId: "loadTodos" });
+  dispatch("loadTodos");
 
   return (
     <div className="App">
