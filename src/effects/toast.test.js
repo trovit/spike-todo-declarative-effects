@@ -1,9 +1,9 @@
-import * as reffects from "reffects";
 import * as toastEffect from "./toast";
 import { store as storeModule } from "reffects-store";
 import * as timerModule from "../infrastructure/timer";
 import { destroyAllMocks } from "../../testHelpers/fixtures";
 import { callsTo } from "../../testHelpers/mockHelpers";
+import { clearHandlers, getEffectHandler } from "reffects";
 
 describe("toast effect", () => {
   expect(storeModule.setState).toBeDefined();
@@ -12,7 +12,7 @@ describe("toast effect", () => {
   expect(timerModule.clear).toBeDefined();
 
   afterEach(() => {
-    reffects.clearHandlers();
+    clearHandlers();
     destroyAllMocks();
   });
 
@@ -23,7 +23,7 @@ describe("toast effect", () => {
     const store = createStore({ toast: { visible: false, timeoutId: null } });
     const timer = createInstantaneousTimer(newToastId);
     toastEffect.register(store, timer);
-    const toastHandler = reffects.getEffectHandler(effectId);
+    const toastHandler = getEffectHandler(effectId);
     const toastData = { text: "toastText", milliseconds: "milliseconds" };
 
     toastHandler(toastData);
@@ -43,7 +43,7 @@ describe("toast effect", () => {
     const store = createStore({ toast: { visible: true, timeoutId: idOfPreviousToast } });
     const timer = createInstantaneousTimer(newToastId);
     toastEffect.register(store, timer);
-    const toastHandler = reffects.getEffectHandler(effectId);
+    const toastHandler = getEffectHandler(effectId);
     const toastData = { text: "toastText", milliseconds: "milliseconds" };
 
     toastHandler(toastData);

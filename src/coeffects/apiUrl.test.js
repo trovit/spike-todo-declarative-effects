@@ -1,11 +1,10 @@
-import * as reffects from "reffects";
 import * as apiUrlCoeffect from "./apiUrl";
 import { destroyAllMocks } from "../../testHelpers/fixtures";
-import { callsTo } from "../../testHelpers/mockHelpers";
+import { clearHandlers, getCoeffectHandler } from "reffects";
 
 describe("apiUrl coeffect", () => {
   afterEach(() => {
-    reffects.clearHandlers();
+    clearHandlers();
     destroyAllMocks();
   });
 
@@ -14,7 +13,7 @@ describe("apiUrl coeffect", () => {
     const coeffectId = "apiUrl";
     const globals = { apiUrl: apiUrl };
     apiUrlCoeffect.register(globals);
-    const apiUrlHandler = reffects.getCoeffectHandler(coeffectId);
+    const apiUrlHandler = getCoeffectHandler(coeffectId);
 
     expect(apiUrlHandler()).toEqual({ [coeffectId]: apiUrl });
   });

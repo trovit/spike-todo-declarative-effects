@@ -1,14 +1,14 @@
-import * as reffects from "reffects";
 import * as setStateEffect from "./setState";
 import { store as storeModule } from "reffects-store";
 import { destroyAllMocks } from "../../testHelpers/fixtures";
 import { callsTo } from "../../testHelpers/mockHelpers";
+import { clearHandlers, getEffectHandler } from "reffects";
 
 describe("setState effect", () => {
   expect(storeModule.setState).toBeDefined();
 
   afterEach(() => {
-    reffects.clearHandlers();
+    clearHandlers();
     destroyAllMocks();
   });
 
@@ -16,7 +16,7 @@ describe("setState effect", () => {
     const effectId = "setState";
     const store = { setState: jest.fn() };
     setStateEffect.register(store);
-    const setStateHandler = reffects.getEffectHandler(effectId);
+    const setStateHandler = getEffectHandler(effectId);
     const firstMutation = { path: "visibilityFilter", newValue: "all" };
     const secondMutation = { path: "toast.isShown", newValue: true };
     const mutations = {
