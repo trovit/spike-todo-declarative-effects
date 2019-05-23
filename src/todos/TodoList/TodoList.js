@@ -1,7 +1,4 @@
 import React from 'react';
-import { dispatch } from 'reffects';
-import { subscribe } from 'reffects-store';
-import { visibleTodosSelector } from '../selectors';
 import TodoItem from './TodoItem';
 import {
   VISIBILITY_FILTERS_SHOW_ALL,
@@ -14,7 +11,7 @@ export function TodoList({ todos, handleFilterClick }) {
     <React.Fragment>
       <ul>
         {todos ? (
-          todos.map(function(todo) {
+          todos.map(function (todo) {
             return (
               <li key={todo.id} className={`${todo.done ? 'done' : 'undone'}`}>
                 <TodoItem id={todo.id} text={todo.text} isDone={todo.done} />
@@ -22,8 +19,8 @@ export function TodoList({ todos, handleFilterClick }) {
             );
           })
         ) : (
-          <p> No todos </p>
-        )}
+            <p> No todos </p>
+          )}
       </ul>
       <section>
         <button onClick={() => handleFilterClick(VISIBILITY_FILTERS_SHOW_ALL)}>
@@ -42,14 +39,4 @@ export function TodoList({ todos, handleFilterClick }) {
   );
 }
 
-export default subscribe(
-  TodoList, 
-  function(state) {
-    return {
-      todos: visibleTodosSelector(state),
-      handleFilterClick: activeFilter => {
-        dispatch({ id: 'filterTodos', payload: activeFilter });
-      }
-    };
-  }
-);
+export default TodoList;

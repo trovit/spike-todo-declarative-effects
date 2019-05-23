@@ -1,6 +1,5 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { dispatch } from "reffects";
 
 import "./styles.css";
 
@@ -11,8 +10,6 @@ import * as boostrap from "./bootstrap";
 boostrap.startApp();
 
 function App() {
-  dispatch("loadTodos");
-
   return (
     <div className="App">
       <h1>TODOS</h1>
