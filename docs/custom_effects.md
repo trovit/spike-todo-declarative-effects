@@ -42,7 +42,7 @@ registerEventHandler(
                         done: !!item.description
                       }));;
         return {
-            setState: [{ path: ["todos"], newValue: todos }]
+            setState: {"todos": todos}
         };
     }
 );
@@ -55,6 +55,26 @@ Notice that the data associated to the `setState` effect in the effects object i
 1. The key represents the **path** in the app state to get to the value we'd like to mutate. A path is represented by a string in which each part of the path is separated by a dot, like `'todos.status'`. In this example, the piece of state being mutated would be `appState.todos.status`.
 
 2. The value represents the **new value** to be set.
+
+For instance, given this `app-state`:
+
+```js
+{
+  todos: {
+    :status 200
+  }
+}
+```
+
+if the mutation of the value located at the path `'todos.status'` were expressed as `{'todos.status': 400}, the resulting `app-state` after applying that mutation would be:
+
+```js
+{
+  todos: {
+    :status 400
+  }
+}
+```
 
 You should never use the `setState` method of the `reffects-store` inside an event handler or inside any function called from an event handler because that would make it impure and, as such, much more difficult to test.
 

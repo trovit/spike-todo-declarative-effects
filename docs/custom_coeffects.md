@@ -22,7 +22,7 @@ registerEventHandler(
           }  
         };
     }
-    ["datetime"]
+    [coeffect("datetime")]
 );
 ```
 Here we used the third parameter of [reffects' registerEventHandler](https://github.com/trovit/reffects/blob/master/docs/api.md#registereventhandler) function to declare the list of coeffects that the event handler of the `displayTime` event will receive when called. In this case, it includes only the `datetime` coeffect.
@@ -48,9 +48,9 @@ registerEventHandler(
         return todo;
     });
     return {
-      setState: [
-        { path: ["todos"], newValue: newTodos },
-      ]
+      setState: {
+        "todos": newTodos
+      }
     };
   },
   [coeffect('state', {todos: 'todos'})]);
@@ -97,7 +97,7 @@ registerEventHandler(
           }
         };
     },
-    ["apiUrl"]
+    [coeffect("apiUrl")]
 );
 ```
 Here we used the third parameter of [reffects' registerEventHandler](https://github.com/trovit/reffects/blob/master/docs/api.md#registereventhandler) function to declare the list of coeffects that the event handler of the `loadTodos` event will receive when called. In this case, it includes only the `apiUrl` coeffect.
