@@ -8,8 +8,8 @@
     "react": "16.8.3",
     "react-dom": "16.8.3",
     "react-scripts": "2.1.8",
-    "reffects": "0.1.5",
-    "reffects-store": "^0.1.14",
+    "reffects": "0.1.6",
+    "reffects-store": "^0.2.2",
     "reselect": "^4.0.0"
   },
   "devDependencies": {
